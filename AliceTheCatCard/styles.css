@@ -1,0 +1,40 @@
+.cat-img{
+    width:200px;
+    border-radius:32px;
+}
+
+.card{
+    display: flex;
+    justify-content:space-between;
+    
+    margin: 20px auto;
+    padding: 20px;
+    width: 540px;
+    
+    border: 4px solid #6E260E;
+    border-radius: 8px;
+    background-color: burlywood;
+    color: #353935;
+}
+
+.text {
+    width: 320px;
+}
+
+/*
+Stretch goals:
+Find other ways you can personalize 
+the design of your business card, e.g.:
+- change the border(s)
+- add border radius
+- shuffle the layout
+- shadows        🤯
+- hover effects  🤯🤯
+- animations     🤯🤯🤯
+*/
+
+/*
+Final challenge:
+Download the code to your local computer and place it
+in a folder called "business-card"
+*/

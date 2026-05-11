@@ -1,0 +1,130 @@
+:root {
+    --twilight-indigo: #464073;
+    --french-blue: #313A7D;
+    --coffee-bean: #1d090b;
+    --sandy-brown: #F0A168;
+    --off-white: #f6f9fa;
+}
+
+body {
+    text-align: center;
+    margin: 0px;
+    background: linear-gradient(#89cff0, var(--off-white));
+}
+
+.title-txt {
+    
+    text-align: center;
+    width: 400px;
+    margin: 10px auto;
+    padding: 15px 30px;
+    border: 2px solid var(--coffee-bean);
+    border-radius: 30px;
+
+    background-image: url("./images/WinnipegSky.jpg");
+    background-position: center 820px;
+
+    color: var(--off-white);
+    text-shadow: 0px 0px 1px var(--coffee-bean);
+}
+
+.sub-title-txt {
+    margin: 30px 0px 10px 10px;
+}
+
+.space-txt {
+    display:block;
+    width:300px;
+    margin:auto;
+}
+
+.body-text {
+    margin: 0px auto 40px auto;
+    padding: 30px 10px 10px 5px;
+
+    color:var(--off-white);
+    text-shadow: 0px 0px 1px black;
+    line-height: 30px;
+
+    position: relative;
+    z-index: 1;
+}
+
+#about-section {
+    position: relative;
+    background-image: url("./images/human-rights-museum.jpg");
+    background-position: center;
+    margin: 0px auto;
+    width: 420px;
+    height:420px;
+
+    border: 2px solid var(--coffee-bean);
+    border-radius: 5px;
+}
+
+#about-overlay {
+    position: absolute;
+    background: linear-gradient( rgba(27, 27, 27, 0.5), rgba(190, 188, 188, 0));
+    margin: 20px;
+    width: 380px;
+    height: 400px;
+
+    border-radius:5px;
+    z-index: 0;
+
+}
+
+.things-todo {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+.footer {
+    background: linear-gradient( rgba(27, 27, 27, 0.5), rgba(190, 188, 188, 0));
+    margin:30 0 30 0;
+    padding:1px;
+
+    border-top: 3px solid var(--coffee-bean);
+}
+
+#footer-title {
+    font-size: 20px;
+    color: var(--off-white);
+    text-shadow: 1px 1px 2px var(--coffee-bean);
+}
+
+#bar {
+    background-image: url("./images/Bar.jpg");
+    width: 200px;
+    height: 200px;
+    color: var(--off-white);
+
+    border: 2px solid black;
+    border-radius: 4px;
+    text-shadow: 1px 1px 2px var(--coffee-bean);
+}
+
+#trains {
+    background-image: url("./images/trains.jpg");
+    width: 200px;
+    height: 200px;
+    color: var(--off-white);
+
+    border: 2px solid black;
+    border-radius: 4px;
+    text-shadow: 1px 1px 2px var(--coffee-bean);
+}
+
+#jets {
+    background-image: url("./images/Jets.jpg");
+    width: 200px;
+    height: 200px;
+    color: var(--off-white);
+
+    border: 2px solid black;
+    border-radius: 4px;
+    text-shadow: 1px 1px 2px var(--coffee-bean);
+
+}
