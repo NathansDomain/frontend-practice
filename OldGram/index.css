@@ -1,0 +1,100 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body, header, p {
+    margin: 0;
+    padding: 0;
+}
+
+.small-mrg {
+    margin: 10px 10px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #363737;
+    padding: 0 20px 0 15px;
+    margin: 0;
+}
+
+.avatar-img {
+    max-height: 60px;
+    border-radius: 50%;
+    margin: 0;
+}
+
+.logo-img {
+    max-height: 120px;
+    margin: 0;
+}
+
+.post-container {
+    margin: 20px 0px;
+    border-bottom: 1px solid #363737;
+}
+
+.user-container {
+    display: flex;
+}
+
+.user-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-evenly;
+    flex: 1;
+    
+    margin-left:10px
+}
+
+.user-name-txt {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.user-location-txt {
+    font-size: 0.95rem;
+}
+
+.post-img {
+    width: 100%;
+}
+
+.reaction-container {
+    display: flex;
+    margin: 0;
+}
+
+.reaction-img {
+    width: 6%;
+    padding: 5px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.reaction-img:hover, .reaction-img:focus {
+    transform: translateY(-10px); /* Moves image up */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Adds depth shadow */
+    border-radius: 4px;
+}
+
+.response-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.likes-txt {
+    font-weight: 500;
+}
+
+.comments-container {
+    display: flex;
+    margin: 15px 0px
+}
+
+.username-txt {
+    font-weight: 500;
+    margin-right: 5px;
+}
