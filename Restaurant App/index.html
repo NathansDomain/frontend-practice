@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <link rel="stylesheet" href="index.css">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <section class="header-container">
+                <img class ="title-img" src="./images/burger.png" alt="delicious burger" alt="Deleicious bbq burger with mozzeralla, letuce and onions."></img>
+                <div class="text-overlay">
+                    <h1 class="large-text whitesmoke-text shadow-text-outline">Jimmy's Diner</h1>
+                    <h2 class="medium-text whitesmoke-text shadow-text-outline">The best Burgers and Pizzas in town</h2>
+                </div>
+            </section>
+        </header>
+        <main class="app">
+            <section class="menu items-container grey-container-outline">
+            </section>
+            <section class="cart grey-container-outline hidden">
+                <div class="cart-text ">
+                    <h3 class="medium-text">Your order:</h3>
+                    <ul class="cart-items underline"></ul>
+                    <p class="small-text total"></p>
+                </div>
+                <button class="checkout-btn small-text round-style medium-container"  data-action="checkout">checkout</button>
+                <button class="clear-btn small-text round-style medium-container"  data-action="clear">Clear order</button>
+            </section>
+            <section class="hidden checkout-msg light-green-background">  
+            </section>
+        </main>
+        <div class="backdrop hidden">
+            <div class="form-modal">
+                <form id="pay-form">
+                    <fieldset class="field-set">
+                        <legend class="medium-text small-bottom-gap">Enter card details</legend>
+                        <label for="name">Enter your name</label>
+                        <input 
+                            required
+                            class="small-bottom-gap box-input"
+                            id="name" 
+                            name="name"
+                            type="text" 
+                            placeholder="John Doe"/>
+                            
+                        <label for="card-number">Enter your card number</label>
+                        <input 
+                            required
+                            class="small-bottom-gap box-input"
+                            id="card-number" 
+                            type="text" 
+                            name="card-number"
+                            placeholder="3245-****-****-2123" 
+                            maxlength="12"
+                            inputmode="numeric"/>
+                            
+                        <label for="card-cvv">Enter your CVV</label>
+                        <input 
+                            required
+                            class="small-bottom-gap box-input"
+                            id="card-cvv" 
+                            type="text" 
+                            name="cvv"
+                            placeholder="123"
+                            maxlength="4"
+                            inputmode="numeric"/>
+                        <button type="submit" class="submit-btn green-background">Pay</button>
+                    </fieldset>
+                </form>
+                <button class="close-btn" data-action="close-modal">X</button>
+            </div>
+        </div>
+	<script src="index.js" type="module"></script>
+    </body>
+</html>
+
