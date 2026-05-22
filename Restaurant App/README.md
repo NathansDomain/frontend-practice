@@ -10,7 +10,7 @@ A simple vanilla JS restaurant order app. Users can browse items and add them to
 - Responsive layout (basic)
 
 ## Built With
--- HTML, CSS, JavaScript
+- HTML, CSS, JavaScript
 
 ### What I learned
 - Event delegation
