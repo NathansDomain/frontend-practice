@@ -7,12 +7,15 @@ const backdrop = document.querySelector('.backdrop')
 const checkoutMsg = document.querySelector('.checkout-msg')
 const payForm = document.getElementById('pay-form')
 
-let order = []
+let order = JSON.parse(localStorage.getItem("order")) || []
+main()
 
+
+//Event listeners, uses event delegation and event bubbling
 document.addEventListener('submit', function(e) {
     // 1. Overwrite the default action
     e.preventDefault();
-    if(e.target.id === payForm.id)
+    if(e.target === payForm)
     {
         console.log("Form submission intercepted!");
         const formData = new FormData(e.target);
@@ -29,10 +32,13 @@ document.addEventListener("click", (e) => {
     const btn = e.target.closest("button");
     if (!btn) return;
     
+    let wasChanged = false
     const action = btn.dataset.action;
+
     if(action === 'clear')
     {
         order = []
+        wasChanged = true
     }
     else if(action === 'checkout')
     {
@@ -45,55 +51,22 @@ document.addEventListener("click", (e) => {
     else if(action === 'add' || action === 'rmv')
     {
         menuBtns(btn)
+        wasChanged = true
     }
-    
-    if(order.length === 0)
+    if(wasChanged)
     {
-        cart.classList.add('hidden')
+        renderCartUI()
     }
 })
 
-function menuBtns(btn) {
-    const foodItem = menuArray.find(item => item.id === Number(btn.dataset.id))
-    const exisitingItem = order.find(item => item.id === foodItem.id)
-    
-    if(btn.dataset.action === 'add')
-    {
-        if(exisitingItem)
-        {
-            exisitingItem.quantity++
-        }
-        else
-        {
-            order.push({...foodItem, quantity:1})
-            cart.classList.remove('hidden')
-        }
-        renderCartUI()
-        
-    }
-    else if(btn.dataset.action === 'rmv')
-    {
-        const foodIndex = order.findIndex(foodItem => foodItem.id === Number(btn.dataset.id))
-        if(foodIndex !== -1)
-        {
-            exisitingItem.quantity--;
-            if(exisitingItem.quantity === 0)
-            {
-                order.splice(foodIndex, 1)
-            }
-            renderCartUI()
-            
-        }
-    }
-}
-
-function payModal() {
-    backdrop.classList.remove('hidden')
-}
-
 function main() {
-    
+    updateUI()
+}
+
+// Rendering logic
+function updateUI() {
     renderMenuUI()
+    renderCartUI()
 }
 
 function renderCheckoutMsgUI(data)
@@ -117,6 +90,64 @@ function renderMenuUI()
     menu.innerHTML = renderMenu()
 }
 
+function renderCartUI() {
+    saveOrder()
+
+    const html = cart.querySelector(".cart-items")
+    if(order.length > 0)
+    {
+        cart.classList.remove('hidden')
+        html.innerHTML = renderCart();
+        total.textContent = `Total: $${order.reduce((total, {price, quantity}) =>total + price*quantity, 0)}`
+    }
+    else
+    {
+        cart.classList.add('hidden')
+        html.innerHTML = ''
+        total.textContent = ''
+    }
+}
+
+
+// Helper functions, called by other functions driving logic
+function saveOrder() {
+    localStorage.setItem("order", JSON.stringify(order))
+}
+
+function payModal() {
+    backdrop.classList.remove('hidden')
+}
+
+//Logic for handling button interaction with food items in the menu
+function menuBtns(btn) {
+    const foodItem = menuArray.find(item => item.id === Number(btn.dataset.id))
+    const existingItem = order.find(item => item.id === foodItem.id)
+    
+    if(btn.dataset.action === 'add')
+    {
+        if(existingItem)
+        {
+            existingItem.quantity++
+        }
+        else
+        {
+            order.push({...foodItem, quantity:1})
+        }        
+    }
+    else if(btn.dataset.action === 'rmv')
+    {
+        if(existingItem)
+        {
+            existingItem.quantity--;
+            if(existingItem.quantity <= 0)
+            {
+                order = order.filter(item => item.id !== existingItem.id)
+            }   
+        }
+    }
+}
+
+//Generate formated html for rerendering one state has changed
 function renderMenu() {
     return menuArray.map(({name, ingredients, id, price, emoji}) => 
     `
@@ -134,11 +165,6 @@ function renderMenu() {
 }
 
 function renderCart() {
-      return order.map(({id, name, quantity}) => `<li class="cart-itm small-text lightgray-text" data-id="${id}">${quantity}${name}</li>`).join('')
-}
 
-function renderCartUI() {
-    cart.querySelector(".cart-items").innerHTML = renderCart()
-    total.textContent = `Total: $${order.reduce((total, {price, quantity}) =>total + price*quantity, 0)}`
+    return order.map(({id, name, quantity}) => `<li class="cart-itm small-text lightgray-text" data-id="${id}">${quantity}${name}</li>`).join('')
 }
-main()
