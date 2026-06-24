@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <header>
+            <form class="form-container">
+                <input 
+                    class="color-input no-style small-margin large-size light-border" 
+                    type="color"
+                    name="hex"
+                    value="#fb3">
+                <select class="small-padding small-margin sleek-outline" name="colors" id="selectOptions">
+                    <option value="monochrome">Monochrome</option>
+                    <option value="monochrome-dark">Monochrome Dark</option>
+                    <option value="analogic">Analogic</option>
+                    <option value="complement">Complement</option>
+                    <option value="triad">Triad</option>
+                </select>
+                <button class="small-padding small-margin sleek-outline">Get color scheme</button>
+            </form>
+        </header>
+       
+       <main>
+            <div class="palette-container">
+            </div>
+       </main>
+        <script src="index.js"></script>
+    </body>
+</html>
